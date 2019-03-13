@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<br><br>
+<header>
+
+    <div class="row header-info">
+        <div class="col-12 text-center">
+            <h1 class="wow fadeIn">Welcome to the Task Manager App</h1>
+            <br/>
+            <p class="lead wow fadeIn" data-wow-delay="0.5s">Lorem ipsum dolor sit amet, consectetur adipis. <br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit sit dol mi arlna.</p>
+            <br/>
+            <div class="row">
+                <div class="col-8">
+                    <button type="submit" class="button" onclick="window.location='{% url 'signup'%}';">SignUp!</button>
+                </div>
+                <div class="col-4 text-left" >
+                    <button type="submit" class="button" onclick="window.location='{% url 'login'%}';">Login</button>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br>
+        </div>
+    </div>
+</header>
+
+{% endblock %}
+
+

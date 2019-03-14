@@ -8,7 +8,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')745smexy@oxjx40k@e5t(9%%3rao-@xt-&h&&i_vq3%g!ziml'
+SECRET_KEY = '$-n782cs-2s&3%d4x@h3pbo#y6u4e20s7nc+dyh6s_bw0ec7%&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'accounts.apps.AccountsConfig',
+    'team.apps.TeamConfig',
+    'tasks.apps.TasksConfig'
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -106,6 +108,9 @@ USE_L10N = True
 
 USE_TZ = True
 
+CSRF_COOKIE_SECURE = False
+
+AUTH_PROFILE_MODULE = 'accounts.Profile'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/

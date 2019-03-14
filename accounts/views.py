@@ -1,14 +1,18 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth.models import User
+from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
 
 # Create your views here.
 
 def home(request):
-    return render(request,'accounts/home.html')
+    if request.user == 'AnonymousUser':
+        return render(request,'accounts/home.html')
+    return redirect('userdetail',str(request.user.id))
 
 def signup(request):
+    error = None
     if request.method == 'POST':
         if request.POST['password1'] == request.POST['password2']:
             try:
@@ -16,6 +20,7 @@ def signup(request):
                 return render(request,'accounts/signup.html',{'error' : 'Username already taken'})
             except User.DoesNotExist:
                 user = User.objects.create_user(username=request.POST['username'],password=request.POST['password1'])
+                user.profile.team = None
                 auth.login(request,user)
                 return redirect('userdetail',str(user.id))
         else:
@@ -39,6 +44,7 @@ def userdetail(request,user_id):
     user = get_object_or_404(User,pk=user_id)
     return render(request, 'accounts/userdetail.html',{'user':user})
 
+@login_required()
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)

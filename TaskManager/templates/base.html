@@ -74,6 +74,9 @@
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
                     <li class="nav-item active">
+                            <a class="nav-link" href="{% url 'createteam' %}">Create Team</a>
+                    </li>
+                    <li class="nav-item active">
                             <a class="nav-link" href="{% url 'userdetail' user.id %}">Hi {{user}}</a>
                     </li>
                     <li class="nav-item active">

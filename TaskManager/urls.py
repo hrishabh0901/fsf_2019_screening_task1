@@ -7,4 +7,5 @@ urlpatterns = [
     path('',views.home,name='home'),
     path('accounts/',include('accounts.urls')),
     path('team/',include('team.urls')),
+    path('tasks/',include('tasks.urls')),
 ]

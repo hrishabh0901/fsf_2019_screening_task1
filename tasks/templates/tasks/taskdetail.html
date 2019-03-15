@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+{% if error %}
+<h6>{{ error }}</h6>
+{% endif %}
+    <h2>Task Detail</h2>
+    <h3 class="title"> Title    </h3><h5> {{ task.title }}</h5>
+    <h3 class="title"> Assignee </h3><h5> {{ task.assignee }}</h5>
+    <h3 class="title"> Status  </h3><h5> {{ task.status }}</h5>
+    <h3 class="title"> Description </h3>
+    <p> {{ task.body }}</p>
+    <h3 class="title"> Members </h3>
+    {% for member in members%}
+      <li>{{member}}</li>
+    {% endfor %}
+    <br>
+    <button class="button" onclick="window.location='{% url 'task_edit' task.id %}';">Edit</button>
+
+<br><br><br><br>
+{% endblock %}

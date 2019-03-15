@@ -7,9 +7,11 @@ from django.contrib import auth
 # Create your views here.
 
 def home(request):
-    if request.user == 'AnonymousUser':
+    try:
+        user = get_object_or_404(User, pk=request.user.id)
+        return redirect('userdetail', str(request.user.id))
+    except:
         return render(request,'accounts/home.html')
-    return redirect('userdetail',str(request.user.id))
 
 def signup(request):
     error = None

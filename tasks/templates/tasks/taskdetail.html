@@ -5,34 +5,36 @@
 {% block content %}
 <br>
 {% if error %}
-<h6>{{ error }}</h6>
+<h6 class="e">{{ error }}</h6>
 {% endif %}
-    <h2>Task Detail</h2>
-    <h3 class="title"> Title    </h3><h5> {{ task.title }}</h5>
-    <h3 class="title"> Assignee </h3><h5> {{ task.assignee }}</h5>
-    <h3 class="title"> Status  </h3><h5> {{ task.status }}</h5>
-    <h3 class="title"> Description </h3>
-    <p> {{ task.body }}</p>
-    <h3 class="title"> Members </h3>
-    {% for member in members%}
-      <li>{{member}}</li>
-    {% endfor %}
-    <br>
-    <a class="button" href="{% url 'task_edit' task.id %}">Edit</a>
 
-    <br><br><br><br>
-    <a class="button" href="{% url 'add_comment_to_task' task.id %}">Add comment</a>
-    <br><br><br>
-    {% for comment in task.comments.all %}
-        <div class="comment">
-            <div class="date">{{ comment.created_date }}</div>
-            <strong>{{ comment.author }}</strong>
-            <p>{{ comment.text|linebreaks }}</p>
-        </div>
-    {% empty %}
-        <br><br>
-        <p>No comments here yet :(</p>
-    {% endfor %}
+<h1><strong><ins>Task Detail</ins></strong></h1>
+<br>
+<h4><b>Title &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b><i style="color:green;">&nbsp{{ task }}</i></h4>
+<h4><b>Assignee &nbsp&nbsp&nbsp&nbsp:</b><i style="color:green;">&nbsp{{ task.assignee }}</i></h4>
+<h4><b>Status &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b><i style="color:green;">&nbsp{{ task.status }}</i></h4>
+<br>
+<h4><b>Description</b></h4><p><i style="color:green;">&nbsp{{ task.body }}</i></p>
+<h4><b>Members</b><i style="color:green;">{% for t in members %}
+                                             <li class="tab title" >{{ t }}</li>
+                                          {% endfor %}</i></h4>
+
+<br>
+<a class="button" href="{% url 'task_edit' task.id %}">Edit</a>
+
+<br><br><br><br>
+<a class="button" href="{% url 'add_comment_to_task' task.id %}">Add comment</a>
+<br><br><br>
+{% for comment in task.comments.all %}
+    <div class="comment groove">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
+    </div>
+{% empty %}
+    <br><br>
+    <p>No comments here yet :(</p>
+{% endfor %}
 
 <br><br><br><br>
 {% endblock %}

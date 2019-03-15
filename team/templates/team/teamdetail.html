@@ -2,13 +2,14 @@
 
 {% block content %}
 <br>
-    <h2>Team Detail</h2>
-    <br>
-    <h3 class="title"> Team Name : : {{ team.team_name }}</h3>
-    <h3>Team Creator : : {{ team.creator }}</h3>
-    <h3>Members :</h3>
-    {% for member in team.members %}
-      <h4>{{member}}</h4>
-    {% endfor %}
+
+<h1><strong><ins>TeamDetail</ins></strong></h1>
+<br>
+<h4><b>Name &nbsp&nbsp&nbsp:</b><i style="color:green;">&nbsp{{ team.team_name }}</i></h4>
+<h4><b>Creator :</b><i style="color:green;">&nbsp{{ team.creator }}</i></h4>
+<br>
+<h4><b>Members</b><i style="color:green;">{% for member in team.members %}
+                                             <li class="tab title" >{{ member }}</li>
+                                          {% endfor %}</i></h4>
 
 {% endblock %}

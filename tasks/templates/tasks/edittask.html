@@ -3,8 +3,10 @@
 {% block content %}
 
 <br>
-    <h2>Task Detail</h2>
-    <h5 class="title"> Title   {{ task.title }} </h5>
+    <h1><strong><ins>Edit Task Detail</ins></strong></h1>
+    <br>
+    <h5><b>Title: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</b><i style="color:green;">&nbsp{{ task }}</i></h5>
+<br>
     <form method="POST" class="post-form">{% csrf_token %}
         <table>{{ form.as_table }}</table>
         <button type="submit" class="button">Done</button>

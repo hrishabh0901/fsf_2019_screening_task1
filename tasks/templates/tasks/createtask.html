@@ -2,7 +2,7 @@
 
 {% block content %}
 <br>
-    <h2>New Task</h2>
+    <h1><strong><ins>New Task</ins></strong></h1>
 <br>
     <form method="POST" class="post-form">{% csrf_token %}
         <table>{{ form.as_table }}</table>

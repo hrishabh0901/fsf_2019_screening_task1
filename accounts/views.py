@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from .models import Profile
 from django.contrib.auth.decorators import login_required
 from django.contrib import auth
+from tasks.models import Task
 
 # Create your views here.
 
@@ -44,7 +45,9 @@ def login(request):
 @login_required()
 def userdetail(request,user_id):
     user = get_object_or_404(User,pk=user_id)
-    return render(request, 'accounts/userdetail.html',{'user':user})
+    taskcreated = Task.objects.filter(assignee=request.user)
+    taskassigned = request.user.tasks.all().difference(taskcreated)
+    return render(request, 'accounts/userdetail.html',{'user':user,'taskcreated':taskcreated,'taskassigned':taskassigned})
 
 @login_required()
 def logout(request):

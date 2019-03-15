@@ -33,7 +33,7 @@ def check_membership(request,members):
     return False
 
 @login_required()
-def taskdetail(request,task_id,error=None):
+def taskdetail(request,task_id):
     task = get_object_or_404(Task,pk=task_id)
     members = task.user_assgined.all()
     if check_membership(request,members):
@@ -44,7 +44,7 @@ def taskdetail(request,task_id,error=None):
 def task_edit(request,task_id):
     task = get_object_or_404(Task, pk=task_id)
     if task.assignee != request.user:
-        return taskdetail(request,task_id,'You are not not assigned to edit the task')
+        return render(request, 'tasks/taskdetail.html', {'task': task,'error': 'You are not assigned to edit the task'})
     if request.method == 'POST':
         form = TaskForm1(request.user,request.POST,instance=task)
         if form.is_valid():
@@ -54,7 +54,7 @@ def task_edit(request,task_id):
             return redirect('taskdetail', str(task.id))
     else:
         form = TaskForm1(request.user,instance=task)
-    return render(request, 'tasks/edittask.html', {'form': form})
+    return render(request, 'tasks/edittask.html', {'form': form,'task':task})
 
 @login_required()
 def add_comment_to_task(request,task_id):

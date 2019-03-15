@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
-
+.comment {
+    margin: 20px 0px 20px 20px;
+}
 {% block content %}
 <br>
 {% if error %}
@@ -16,7 +18,21 @@
       <li>{{member}}</li>
     {% endfor %}
     <br>
-    <button class="button" onclick="window.location='{% url 'task_edit' task.id %}';">Edit</button>
+    <a class="button" href="{% url 'task_edit' task.id %}">Edit</a>
+
+    <br><br><br><br>
+    <a class="button" href="{% url 'add_comment_to_task' task.id %}">Add comment</a>
+    <br><br><br>
+    {% for comment in task.comments.all %}
+        <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text|linebreaks }}</p>
+        </div>
+    {% empty %}
+        <br><br>
+        <p>No comments here yet :(</p>
+    {% endfor %}
 
 <br><br><br><br>
 {% endblock %}

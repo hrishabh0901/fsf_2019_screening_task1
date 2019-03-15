@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task
+from .models import Task,Comment
 
 choices = [('Empty','Empty')]
 
@@ -23,4 +23,11 @@ class TaskForm1(TaskForm):
         model = Task
         fields = ('body','status')
         excluse = ('title', 'members')
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('text',)
+
+
 

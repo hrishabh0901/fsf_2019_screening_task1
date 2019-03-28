@@ -11,6 +11,10 @@
     <form method="POST" class="post-form">{% csrf_token %}
         <!--<table>{{ form.as_table }}</table>-->
         <p>{{ form.as_p }}</p>
-        <button type="submit" class="button">Create</button>
+        <button type="submit" class="button" >Create</button>
+        <button class="button" onclick="window.location='{% url 'home'%}';" >Back</button>
+        <br><br><br><br>
+        <p><small>**Note:Team Creator is automatically added to the team</small></p>
+        <br><br>
     </form>
 {% endblock %}

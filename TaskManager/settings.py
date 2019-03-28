@@ -13,7 +13,7 @@ SECRET_KEY = '$-n782cs-2s&3%d4x@h3pbo#y6u4e20s7nc+dyh6s_bw0ec7%&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -108,7 +108,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 
 AUTH_PROFILE_MODULE = 'accounts.Profile'
 
@@ -120,3 +120,7 @@ STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR,'media')
 MEDIA_URL = '/media/'
+
+NOSE_ARGS = ['--nocapture',
+             '--nologcapture',]
+

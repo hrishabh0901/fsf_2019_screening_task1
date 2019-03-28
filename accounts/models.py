@@ -8,7 +8,7 @@ from team.views import Team
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
-    team = models.ForeignKey(Team,on_delete=models.DO_NOTHING,null=True,default=None)
+    team = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True,default=None)
 
 @receiver(post_save,sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

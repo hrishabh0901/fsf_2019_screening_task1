@@ -77,7 +77,7 @@ a { color: green; }
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <img src="{% static 'logo.png' %}" class="d-inline-block align-top" height="30" width="30">
         {% if user.is_authenticated %}
-            <a class="navbar-brand" href="{% url 'userdetail' user.id %}">Task Manager</a>
+            <a class="navbar-brand" href="{% url 'userdetail' user.id None %}">Task Manager</a>
         {% else %}
             <a class="navbar-brand" href="{% url 'home' %}">Task Manager</a>
          {% endif %}
@@ -95,7 +95,7 @@ a { color: green; }
                             <a class="nav-link" href="{% url 'createteam' %}">Create Team</a>
                     </li>
                     <li class="nav-item active">
-                            <a class="nav-link" href="{% url 'userdetail' user.id %}">Hi {{user}}</a>
+                            <a class="nav-link" href="{% url 'userdetail' user.id None %}">Hi {{user}}</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}">Logout</a>

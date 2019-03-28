@@ -19,10 +19,12 @@ class TaskForm(forms.ModelForm):
         fields = ('title', 'body', 'status')
 
 class TaskForm1(TaskForm):
+    def __init__(self, user, *args, **kwargs):
+        super(TaskForm1, self).__init__(user,*args, **kwargs)
+        self.fields.pop('members')
     class Meta:
         model = Task
         fields = ('body','status')
-        excluse = ('title', 'members')
 
 class CommentForm(forms.ModelForm):
     class Meta:

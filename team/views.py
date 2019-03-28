@@ -16,8 +16,9 @@ def createteam(request):
     error = None
     if request.method == 'POST':
         error = 'Team Name already Taken'
-        form = TeamForm(request.POST)
+        form = TeamForm(request.user,data=request.POST)
         print(form.is_valid())
+        print(form.errors)
         if form.is_valid():
             if Team.objects.filter(team_name=form.cleaned_data['team_name']).exists() == False:
                 team = form.save(commit=False)
@@ -31,7 +32,7 @@ def createteam(request):
                     u.save()
                 return redirect('teamdetail',str(team.id))
 
-    form = TeamForm()
+    form = TeamForm(request.user)
     return render(request,'team/createteam.html',{'form':form,'error':error})
 
 @login_required()

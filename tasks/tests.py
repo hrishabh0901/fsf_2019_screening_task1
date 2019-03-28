@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from .views import createtask,taskdetail,task_edit,add_comment_to_task
 from accounts.views import login
 from .models import Task,Comment
-from .forms import TaskForm
+from .forms import TaskForm,TaskForm1,CommentForm
 
 # Create your tests here.
 
@@ -102,7 +102,8 @@ class TestViews(TestCase):
 
     def test_taskdetail(self):
 
-        # If no such task exist it returns status code 404 not found and the user should be loggedin
+        # If no such task exist it returns status code 404 not found
+        # and the user should be loggedin
         self.client.login(**self.test_credentials)
         response = self.client.get(reverse(taskdetail,args=[12]))
         self.assertEqual(response.status_code, 404)
@@ -157,8 +158,8 @@ class TestViews(TestCase):
         self.client.logout()
 
 
-        # A loggedin user fetches tast_edit and the user is  the creator
-        # of the task so the user will be redirected to the taskdetail.html
+        # A loggedin user fetches task_edit and the user is  the creator
+        # of the task so the user will be redirected to the edittask.html
 
         self.client.login(**self.test_credentials)
         response = self.client.get(reverse(task_edit, args=[self.test_task.id]),follow=True)
@@ -171,7 +172,8 @@ class TestViews(TestCase):
         # After editing the user is redirected to taskdetail page
 
         self.client.login(**self.test_credentials)
-        response = self.client.post(reverse(task_edit, args=[self.test_task.id]),data= self.task_credentials, follow=True)
+        response = self.client.post(reverse(task_edit, args=[self.test_task.id]),
+                                    data= self.task_credentials, follow=True)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'tasks/taskdetail.html')
         self.client.logout()
@@ -251,59 +253,41 @@ class TestViews(TestCase):
 
 
 
+class TestForms(TestCase):
 
+    def setUp(self):
+        self.client = Client()
+        self.createtask_url = reverse(createtask)
+        self.taskdetail_url = reverse(taskdetail,args=[1])
+        self.task_edit_url = reverse(task_edit,args=[1])
+        self.add_comment_to_task_url = reverse(add_comment_to_task, args=[1])
+        self.test_credentials = {
+            'username': 'testuser',
+            'password': 'secret'
+        }
+        self.testuser = User.objects.create_user(**self.test_credentials)
 
+    def test_TaskForm_form(self):
+        form_data = {
+            'title':'testtask1',
+            'body':'testbody',
+            'status':'Done',
+            'members':[self.testuser]
+        }
+        form = TaskForm(self.testuser, data=form_data)
+        self.assertTrue(form.is_valid())
 
+    def test_TaskForm1_form(self):
+        form_data = {
+            'body':'testbody',
+            'status':'Done',
+        }
+        form = TaskForm1(self.testuser, data=form_data)
+        self.assertTrue(form.is_valid())
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def test_CommentForm_form(self):
+        form_data = {
+            'text':'text',
+        }
+        form = CommentForm(data=form_data)
+        self.assertTrue(form.is_valid())

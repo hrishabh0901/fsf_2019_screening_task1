@@ -6,7 +6,7 @@ from team.views import Team
 
 # Create your models here.
 
-class Profile(models.Model):
+class Profile(models.Model): # pragma: no cover
     user = models.OneToOneField(User, on_delete=models.CASCADE,related_name='profile')
     team = models.ForeignKey(Team,on_delete=models.SET_NULL,null=True,default=None)
 

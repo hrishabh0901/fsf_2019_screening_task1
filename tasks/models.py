@@ -5,7 +5,7 @@ from django.utils import timezone
 # Create your models here.
 
 status_CHOICES = (('Planned','Planned'), ('Inprogress','Inprogress'), ('Done','Done'))
-class Task(models.Model):
+class Task(models.Model): # pragma: no cover
     title = models.CharField(max_length=255)
     body = models.TextField()
     assignee = models.ForeignKey(settings.AUTH_USER_MODEL,on_delete=models.SET(None))
@@ -15,7 +15,7 @@ class Task(models.Model):
     def __str__(self):
         return self.title
 
-class Comment(models.Model):
+class Comment(models.Model): # pragma: no cover
     task = models.ForeignKey(Task,on_delete=models.CASCADE,related_name='comments')
     author = models.CharField(max_length=50)
     text = models.TextField()

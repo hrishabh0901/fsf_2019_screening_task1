@@ -21,6 +21,8 @@
 
 <br>
 <a class="button" href="{% url 'task_edit' task.id %}">Edit</a>
+<button class="button" onclick="window.location='{% url 'home'%}';" >Back</button>
+
 
 <br><br><br><br>
 <a class="button" href="{% url 'add_comment_to_task' task.id %}">Add comment</a>

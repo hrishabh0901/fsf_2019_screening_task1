@@ -39,5 +39,10 @@ def createteam(request):
 @csrf_exempt
 def teamdetail(request,team_id):
     team = get_object_or_404(Team,pk=team_id)
-    return render(request, 'team/teamdetail.html', {'team': team})
+    s = set()
+    for user in team.members:
+        u = User.objects.get(username=user)
+        for x in u.tasks.all():
+            s.add(x)
+    return render(request, 'team/teamdetail.html', {'team': team ,'Tasks':s})
 

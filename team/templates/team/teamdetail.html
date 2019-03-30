@@ -11,5 +11,11 @@
 <h4><b>Members</b><i style="color:green;">{% for member in team.members %}
                                              <li class="tab title" >{{ member }}</li>
                                           {% endfor %}</i></h4>
+<h4><b>Tasks</b><i style="color:green;">{% for task in Tasks %}
+    <a href="{% url 'taskdetail' task.id %}"><li class="tab title" >{{ task }}</li></a>
+                                          {% endfor %}</i></h4>
+<br><br>
+<button class="button" onclick="window.location='{% url 'home'%}';" >Back</button>
+
 
 {% endblock %}

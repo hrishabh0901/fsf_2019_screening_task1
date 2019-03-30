@@ -36,3 +36,7 @@ Then run in development mode with:
 <pre>$ python3 manage.py runserver</pre>
 # Access the application
 Like any Django app developed with Django, enter with: http://localhost:8000
+# Test&Coverage
+- Ran 30 tests in 5.244s
+- Coverage of **98%**
+- For more detail analysis on coverage check **htmlcov/index.html**

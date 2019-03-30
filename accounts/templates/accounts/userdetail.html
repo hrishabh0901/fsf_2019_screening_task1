@@ -19,7 +19,7 @@ a { color: green; }
 {% if user.profile.team  %}
 <h4><b>Team &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp:</b><i style="color:green;">&nbsp<a href="{% url 'teamdetail' user.profile.team.id %}">{{ user.profile.team }}</a></i></h4>
 {% else %}
-<h4><b>Team &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  :</b><i style="color:green;">&nbsp<small>No team alloted</small></i></h4>
+<h4><b>Team &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp  :</b><i style="color:green;">&nbsp<small>No team allotted</small></i></h4>
 {% endif %}
 <br>
 <h4><b>Task  Created &nbsp&nbsp </b><i style="color:green;">{% for t in taskcreated %}

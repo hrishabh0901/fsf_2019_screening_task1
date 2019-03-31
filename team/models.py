@@ -4,7 +4,7 @@ from django.contrib.postgres.fields import ArrayField
 
 # Create your models here.
 
-choices = [ (x.username,x.username)  for x in User.objects.all()]
+choices = []
 
 class Team(models.Model):
     team_name = models.CharField(max_length=255)

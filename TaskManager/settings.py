@@ -111,8 +111,6 @@ USE_TZ = True
 
 CSRF_COOKIE_SECURE = True
 
-AUTH_PROFILE_MODULE = 'accounts.Profile'
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 

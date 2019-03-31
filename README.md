@@ -50,7 +50,7 @@ Like any Django app developed with Django, enter with: http://localhost:8000
 # Screenshorts
 ![Login](TaskManager/static/login.png)
 ![SignUp](TaskManager/static/Signup.png)
-![Home](TaskManager/static/home.png)
+![Home](TaskManager/static/Home Page.png)
 ![User Detail](TaskManager/static/user.png)
 ![Team Detail](TaskManager/static/Team.png)
 ![Task Detail](TaskManager/static/Task.png)

@@ -20,7 +20,7 @@ A very simple Task Management web app written with Django
 # Requirements
 - Python 3.5+ (tested with Python 3.6).
 - Django 2.1 and other dependencies declared in the requirements.txt file.
-- A Django compatible database like PostgreSQL (by default uses the Python's built-in SQLite database for development purpose).
+- A Django compatible database PostgreSQL (by default uses the Python's built-in SQLite database ).
 
 # Install and Run
 (Optional) Create a virtual environment and activate it with:
@@ -28,6 +28,12 @@ A very simple Task Management web app written with Django
 Install dependencies with:
 <pre>$ pip install -r requirements.txt</pre>
 Create the database with:
+ - CREATE DATABASE database_name(in psql command line)
+ - Change the NAME of the database in settings.py file
+ - Change the USER according to your POSTGRES USER in settings.py file
+ - Change the PASSWORD in settings.py file
+ 
+Migrating Database:
 <pre>$ python3 manage.py makemigrations
 $ python3 manage.py migrate</pre>
 To create an admin user:
